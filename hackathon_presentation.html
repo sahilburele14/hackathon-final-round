@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Round Hackathon Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .presentation-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 12px;
+            padding: 60px;
+            margin: 30px 0;
+            min-height: 600px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 14px;
+            color: #999;
+            font-weight: 600;
+        }
+        
+        /* Slide 1 - Title Slide */
+        .title-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .title-slide h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title-slide .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .title-slide .tagline {
+            font-size: 1.3em;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+        
+        /* Slide 2 - Overview */
+        .overview-slide {
+            background: linear-gradient(to bottom right, #f8f9ff, #fff);
+            color: #333;
+        }
+        
+        .overview-slide h2 {
+            font-size: 3em;
+            color: #5b6cdb;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #5b6cdb;
+            padding-bottom: 15px;
+        }
+        
+        .overview-content {
+            font-size: 1.3em;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        /* Slide 3 - Core Focus */
+        .focus-slide {
+            background: #fff8e1;
+            color: #333;
+        }
+        
+        .focus-slide h2 {
+            font-size: 3em;
+            color: #f57c00;
+            margin-bottom: 40px;
+        }
+        
+        .focus-items {
+            display: grid;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .focus-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid #ff9800;
+            font-size: 1.3em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .testing-link-box {
+            background: #ff9800;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        
+        /* Patient Checklist Slide */
+        .patient-slide {
+            background: linear-gradient(to bottom right, #e3f2fd, #fff);
+            color: #333;
+        }
+        
+        .patient-slide h2 {
+            font-size: 3em;
+            color: #1976d2;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .checklist-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .check-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #1976d2;
+        }
+        
+        .check-icon {
+            color: #4caf50;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+        
+        /* Researcher Checklist Slide */
+        .researcher-slide {
+            background: linear-gradient(to bottom right, #f3e5f5, #fff);
+            color: #333;
+        }
+        
+        .researcher-slide h2 {
+            font-size: 3em;
+            color: #7b1fa2;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .researcher-slide .check-item {
+            border-left-color: #7b1fa2;
+        }
+        
+        /* System Checklist Slide */
+        .system-slide {
+            background: linear-gradient(to bottom right, #e8f5e9, #fff);
+            color: #333;
+        }
+        
+        .system-slide h2 {
+            font-size: 3em;
+            color: #388e3c;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .system-slide .check-item {
+            border-left-color: #388e3c;
+        }
+        
+        /* Testing Requirements Slide */
+        .testing-slide {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+        
+        .testing-slide h2 {
+            font-size: 3em;
+            margin-bottom: 40px;
+        }
+        
+        .mandatory-box {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        
+        .mandatory-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+        
+        .mandatory-icon {
+            font-size: 2em;
+            color: #4caf50;
+        }
+        
+        /* Final Slide */
+        .final-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .final-slide h2 {
+            font-size: 4em;
+            margin-bottom: 30px;
+        }
+        
+        .final-slide p {
+            font-size: 1.8em;
+            margin: 20px 0;
+            opacity: 0.95;
+        }
+        
+        .success-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            width: 100%;
+        }
+        
+        .success-point {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .success-point h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        /* Navigation Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .control-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        
+        .slide-indicator {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+                min-height: 400px;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.5em;
+            }
+            
+            .overview-slide h2,
+            .focus-slide h2,
+            .patient-slide h2,
+            .researcher-slide h2,
+            .system-slide h2 {
+                font-size: 2em;
+            }
+            
+            .success-points {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide">
+            <h1>⚡ Final Round</h1>
+            <div class="subtitle">Hackathon Refinement Stage</div>
+            <div class="tagline">Precision • Polish • Functionality</div>
+            <div class="slide-number">Slide 1 of 8</div>
+        </div>
+        
+        <!-- Slide 2: Overview -->
+        <div class="slide overview-slide">
+            <h2>What's Different in Round 2?</h2>
+            <div class="overview-content">
+                <p style="margin-bottom: 30px;">After strong submissions in Round 1, this final round will determine who can truly <strong>grab this opportunity</strong>.</p>
+                
+                <div class="highlight-box">
+                    The task remains the same — the difference is in PRECISION, POLISH, and FUNCTIONALITY
+                </div>
+                
+                <p style="margin-top: 30px;">This round focuses on:</p>
+                <ul style="margin-left: 40px; margin-top: 20px; font-size: 1.2em; line-height: 2;">
+                    <li><strong>API Integration Quality</strong> - Do they return proper results?</li>
+                    <li><strong>Data Processing Efficiency</strong> - How smoothly does your platform handle it?</li>
+                    <li><strong>User Experience</strong> - Is everything working seamlessly?</li>
+                </ul>
+            </div>
+            <div class="slide-number">Slide 2 of 8</div>
+        </div>
+        
+        <!-- Slide 3: Core Focus -->
+        <div class="slide focus-slide">
+            <h2>🎯 Core Focus Areas</h2>
+            
+            <div class="focus-items">
+                <div class="focus-item">
+                    <strong>✓</strong> Follow the comprehensive checklist — it's what evaluators will use to test your product
+                </div>
+                
+                <div class="focus-item">
+                    <strong>✓</strong> Verify that your platform works across ALL use cases using our testing document
+                </div>
+                
+                <div class="focus-item">
+                    <strong>✓</strong> Test with provided keywords to ensure API integrations function correctly
+                </div>
+            </div>
+            
+            <div class="testing-link-box">
+                📄 Testing Document (MANDATORY)
+                <div style="font-size: 0.7em; margin-top: 10px; opacity: 0.9;">Access the complete testing guide to verify your implementation</div>
+            </div>
+            <div class="slide-number">Slide 3 of 8</div>
+        </div>
+        
+        <!-- Slide 4: Patient Checklist Part 1 -->
+        <div class="slide patient-slide">
+            <h2>🧍‍♀️ Patient Features Checklist</h2>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Search works for patient queries</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Search results show relevant researchers, trials, and discussion topics with matching scoring system (e.g., 85% match with Dr. John Doe)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Clicking a researcher opens a clear, detailed profile</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Profile shows publications (titles or links)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Profile shows clinical trials of interest</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Section displays top researchers, trials, and readings</span>
+                </div>
+            </div>
+            <div class="slide-number">Slide 4 of 8</div>
+        </div>
+        
+        <!-- Slide 5: Patient Checklist Part 2 -->
+        <div class="slide patient-slide">
+            <h2>🧍‍♀️ Patient Features (Continued)</h2>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Information looks updated (real API data, not static placeholders)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Forum is visible and able to add posts to specific diseases</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Researchers can quickly see questions in their field</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Patients can post or comment (at least demo flow)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Simple navigation (search → profile → back)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Mobile version works and loads quickly</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>No broken links, dead buttons, or errors when loading</span>
+                </div>
+            </div>
+            <div class="slide-number">Slide 5 of 8</div>
+        </div>
+        
+        <!-- Slide 6: Researcher Checklist -->
+        <div class="slide researcher-slide">
+            <h2>🧑‍🔬 Researcher Features Checklist</h2>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Search works for researcher queries</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Results show relevant researchers (matching system), institutions, or trials</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Researcher can view or edit their own info (bio, institution, expertise)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Publications visible (linked to PubMed, Google Scholar, etc.)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Clinical trials linked or imported (from database/API)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Ability to connect and message other researchers (chatbox when accepted)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Option to indicate 'open for collaboration' or 'contact me'</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Displays top new publications/trials in their field</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Access to researcher-only or professional threads</span>
+                </div>
+            </div>
+            <div class="slide-number">Slide 6 of 8</div>
+        </div>
+        
+        <!-- Slide 7: System Requirements -->
+        <div class="slide system-slide">
+            <h2>⚙️ General System Requirements</h2>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Clear distinction between patient and researcher accounts</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Specific search keywords yield appropriate results (e.g., "glioblastoma + immunotherapy" for researcher, "glioblastoma diet" for patient)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Location services show experts and trials closest to patient first</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Favourites section with summarization option (checkboxes for experts, publications, trials to discuss with doctor)</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Functional on mobile, tablet, and desktop</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Loads without lag or console errors</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Uniform fonts, colors (indigo blue), and layout</span>
+                </div>
+                
+                <div class="check-item">
+                    <span class="check-icon">☑</span>
+                    <span>Request expert/collaborator button sends request with context</span>
+                </div>
+            </div>
+            <div class="slide-number">Slide 7 of 8</div>
+        </div>
+        
+        <!-- Slide 8: Mandatory Testing -->
+        <div class="slide testing-slide">
+            <h2>💬 Before Submitting (MANDATORY)</h2>
+            
+            <div class="mandatory-box">
+                <div class="mandatory-item">
+                    <span class="mandatory-icon">✅</span>
+                    <span>Test your app THOROUGHLY using the Testing Document</span>
+                </div>
+                
+                <div class="mandatory-item">
+                    <span class="mandatory-icon">✅</span>
+                    <span>Verify major flows: Patient, Researcher, and General System</span>
+                </div>
+                
+                <div class="mandatory-item">
+                    <span class="mandatory-icon">✅</span>
+                    <span>Test everything on your DEPLOYED LINK (not localhost)</span>
+                </div>
+                
+                <div class="mandatory-item">
+                    <span class="mandatory-icon">✅</span>
+                    <span>Verify ALL API integrations return correct, real-time data</span>
+                </div>
+                
+                <div class="mandatory-item">
+                    <span class="mandatory-icon">✅</span>
+                    <span>Check mobile, tablet, and desktop responsiveness</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; font-size: 1.3em; text-align: center; background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px;">
+                🔗 Access the Testing Document for complete verification steps
+            </div>
+            <div class="slide-number">Slide 8 of 8</div>
+        </div>
+        
+        <!-- Slide 9: Final Message -->
+        <div class="slide final-slide">
+            <h2>🚀 Good Luck!</h2>
+            <p>This is your opportunity to showcase excellence</p>
+            
+            <div class="success-points">
+                <div class="success-point">
+                    <h3>⚡</h3>
+                    <div>PRECISION</div>
+                    <div style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">Accurate data and functionality</div>
+                </div>
+                
+                <div class="success-point">
+                    <h3>✨</h3>
+                    <div>POLISH</div>
+                    <div style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">Professional UI/UX</div>
+                </div>
+                
+                <div class="success-point">
+                    <h3>🎯</h3>
+                    <div>FUNCTIONALITY</div>
+                    <div style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">Smooth integrations</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 50px; font-size: 1.5em;">Make every feature count!</p>
+        </div>
+    </div>
+    
+    <!-- Navigation Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="prevSlide()">← Previous</button>
+        <div class="slide-indicator">
+            <span id="current-slide">1</span> / 9
+        </div>
+        <button class="control-btn" onclick="nextSlide()">Next →</button>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function showSlide(n) {
+            if (n >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            } else if (n < 0) {
+                currentSlide = 0;
+            } else {
+                currentSlide = n;
+            }
+            
+            slides.forEach((slide, index) => {
+                slide.style.display = index === currentSlide ? 'block' : 'none';
+            });
+            
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
